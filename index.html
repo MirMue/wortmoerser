@@ -1,17 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wortmoerser</title>
     <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="firstnamesF.js" defer></script>
+    <script src="firstnamesM.js" defer></script>
+    <script src="surnames.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
     <header>
       <h1>Wortmoerser</h1>
-      <h2>Ein Wort- und Namensrandomisierer</h2>
+      <h2>Ein Markovscher Namensgenerator</h2>
     </header>
+    <form>
+      <input
+        class="btn"
+        onclick="generateMarkovName()"
+        type="button"
+        value="Name generieren"
+      />
+      <input type="radio" id="male" name="gender" value="male" />
+      <label for="male">männlich</label>
+      <input type="radio" id="female" name="gender" value="female" />
+      <label for="female">weiblich</label>
+      <input
+        type="radio"
+        id="random"
+        name="gender"
+        value="random"
+        checked="true"
+      />
+      <label for="randomgender">zufällig</label>
+    </form>
+    <div class="container-name"></div>
+    <footer>
+      <p>Genutzte Ressourcen:</p>
+      <a href="https://github.com/ndsvw/JSON-Namen"
+        >github.com: ndsvw / JSON-Namen</a
+      >
+      <br />
+      <a
+        href="https://medium.com/@alexkrameris/markov-chain-implementation-in-javascript-a698f371d66f"
+        >medium.com: Alex Kramer - "Markov Chain implementation in
+        Javascript"</a
+      >
+    </footer>
   </body>
 </html>

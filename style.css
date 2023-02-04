@@ -1,0 +1,36 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+  background-color: black;
+  margin: 5em;
+}
+
+.btn {
+  font-family: "Courier New", Courier, monospace;
+  padding: 0.5rem 0.8rem;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.container-name {
+  margin-top: 2em;
+}
+
+.name {
+  color: white;
+  padding: 0.3em;
+  font-size: 3em;
+}
+
+.example {
+  padding: 0.3em;
+  font-size: 1.5em;
+}
+
+footer {
+  margin-top: 5em;
+}
+
+footer a {
+  color: lightblue;
+}
