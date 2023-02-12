@@ -3,13 +3,22 @@
 const containerName = document.querySelector(".container-name");
 
 function generateMarkovName() {
-  const markovChain = createMarkovChain();
-  const generatedNames = generateNameList(markovChain);
-  const finishedName = prepareName(generatedNames);
-  putNameOnPage(finishedName);
+  const minLength = Number(document.getElementById("minlength").value);
+  const maxLength = Number(document.getElementById("maxlength").value);
+  if (minLength > maxLength) {
+    alert(
+      "Die Mindestlänge ist größer als die Maximallänge? Das geht so nicht. Versuch's nochmal!"
+    );
+    return;
+  }
+  const wordlist = getWordlistByGender();
+  const markovChain = createMarkovChain(wordlist);
+  const generatedName = generateWord(markovChain, minLength, maxLength);
+  putNameOnPage(generatedName);
+  addExamples(generatedName);
 }
 
-function createMarkovChain() {
+function getWordlistByGender() {
   const radioButtons = document.getElementsByName("gender");
   let gender = "";
   radioButtons.forEach((button) => {
@@ -18,89 +27,35 @@ function createMarkovChain() {
     }
   });
 
-  let names = [];
   if (gender === "random") {
-    names = [...firstnamesM, firstnamesF];
+    return [...firstnamesM, ...firstnamesF];
   }
   if (gender === "male") {
-    names = [...firstnamesM];
+    return [...firstnamesM];
   }
   if (gender === "female") {
-    names = [...firstnamesF];
+    return [...firstnamesF];
   }
-
-  const lettersArray = names.toString().replaceAll(",", " ").split("");
-
-  let markovChain = {};
-  for (let i = 0; i < lettersArray.length; i++) {
-    const letter = lettersArray[i].toLowerCase();
-    if (!markovChain[letter]) {
-      markovChain[letter] = [];
-    }
-    if (lettersArray[i + 1]) {
-      markovChain[letter].push(lettersArray[i + 1].toLowerCase());
-    }
-  }
-
-  return markovChain;
 }
 
-function generateNameList(markovChain) {
-  const letters = Object.keys(markovChain);
-
-  let letter = letters[Math.floor(Math.random() * letters.length)];
-
-  let generatedNames = "";
-  for (let i = 0; i < letters.length; i++) {
-    generatedNames += letter;
-
-    let newLetter =
-      markovChain[letter][
-        Math.floor(Math.random() * markovChain[letter].length)
-      ];
-    letter = newLetter;
-
-    if (!letter || !markovChain.hasOwnProperty(letter)) {
-      letter = letters[Math.floor(Math.random() * letters.length)];
-    }
-  }
-
-  return generatedNames;
-}
-
-function prepareName(generatedNames) {
-  const namesArray = generatedNames.split(" ");
-  const maxNameLength = getMaxLength(namesArray);
-  const filteredNames = namesArray.filter(
-    (name) => name.length > 2 && name.length < maxNameLength
-  );
-  const name = filteredNames[Math.floor(Math.random() * filteredNames.length)];
-  const nameUpperCase = name.charAt(0).toUpperCase() + name.slice(1);
-  return nameUpperCase;
-}
-
-function getMaxLength(namesArray) {
-  const maxLength = namesArray.sort((a, b) => {
-    return b.length - a.length;
-  })[0].length;
-
-  return maxLength;
-}
-
-function putNameOnPage(finishedName) {
+function putNameOnPage(generatedName) {
+  const name = generatedName.charAt(0).toUpperCase() + generatedName.slice(1);
   containerName.innerHTML = "";
   const nameElement = document.createElement("div");
   nameElement.setAttribute("class", "name");
-  nameElement.innerHTML = finishedName;
+  nameElement.innerHTML = name;
   containerName.appendChild(nameElement);
+  return;
+}
 
+function addExamples(generatedName) {
   const textExamples = [
-    `Oh nein! Da kommt ${finishedName} das Monster! Lauf um dein Leben!`,
-    `So, dein Name ist also ${finishedName}? Mh, sehr verdächtig.`,
-    `Also wenn ich ${finishedName} heißen würde, wäre ich verdammt froh!`,
-    `Also wenn ich ${finishedName} heißen würde, wäre ich verdammt sauer!`,
-    `${finishedName}? Waren deine Eltern besoffen als sie dich getauft haben?`,
-    `Hurra! Es ist ${finishedName}, Retter der Nation!`,
+    `Oh nein! Da kommt ${generatedName} das Monster! Lauf um dein Leben!`,
+    `So, dein Name ist also ${generatedName}? Mh, sehr verdächtig.`,
+    `Also wenn ich ${generatedName} heißen würde, wäre ich verdammt froh!`,
+    `Also wenn ich ${generatedName} heißen würde, wäre ich verdammt sauer!`,
+    `${generatedName}? Waren deine Eltern besoffen als sie dich getauft haben?`,
+    `Hurra! Es ist ${generatedName}, Retter der Nation!`,
   ];
 
   const textElement = document.createElement("div");
@@ -108,4 +63,5 @@ function putNameOnPage(finishedName) {
   textElement.innerHTML =
     textExamples[Math.floor(Math.random() * textExamples.length)];
   containerName.appendChild(textElement);
+  return;
 }

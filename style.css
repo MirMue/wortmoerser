@@ -6,6 +6,7 @@ body {
 }
 
 .btn {
+  margin-top: 1em;
   font-family: "Courier New", Courier, monospace;
   padding: 0.5rem 0.8rem;
   font-size: medium;
@@ -14,6 +15,15 @@ body {
 
 .container-name {
   margin-top: 2em;
+}
+
+input[type="radio"] {
+  margin-top: 1em;
+}
+
+input[type="number"] {
+  margin-top: 1em;
+  width: 4em;
 }
 
 .name {
