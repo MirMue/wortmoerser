@@ -11,14 +11,13 @@ function generateMarkovName() {
     );
     return;
   }
-  const wordlist = getWordlistByGender();
-  const markovChain = createMarkovChain(wordlist);
-  const generatedName = generateWord(markovChain, minLength, maxLength);
+  const namelist = getNamelist();
+  const generatedName = generateWord(namelist, minLength, maxLength);
   putNameOnPage(generatedName);
   addExamples(generatedName);
 }
 
-function getWordlistByGender() {
+function getNamelist() {
   const radioButtons = document.getElementsByName("gender");
   let gender = "";
   radioButtons.forEach((button) => {
@@ -43,19 +42,19 @@ function putNameOnPage(generatedName) {
   containerName.innerHTML = "";
   const nameElement = document.createElement("div");
   nameElement.setAttribute("class", "name");
-  nameElement.innerHTML = name;
+  nameElement.innerHTML = generatedName;
   containerName.appendChild(nameElement);
   return;
 }
 
 function addExamples(generatedName) {
   const textExamples = [
-    `Oh nein! Da kommt ${generatedName} das Monster! Lauf um dein Leben!`,
-    `So, dein Name ist also ${generatedName}? Mh, sehr verdächtig.`,
-    `Also wenn ich ${generatedName} heißen würde, wäre ich verdammt froh!`,
-    `Also wenn ich ${generatedName} heißen würde, wäre ich verdammt sauer!`,
-    `${generatedName}? Waren deine Eltern besoffen als sie dich getauft haben?`,
-    `Hurra! Es ist ${generatedName}, Retter der Nation!`,
+    `Oh no! It's ${generatedName} the Terrible! Run for your lives!`,
+    `So your name is ${generatedName}, ey? Very suspicious.`,
+    `Well, if I was named ${generatedName}, I'd be very happy!`,
+    `Well, if I was named ${generatedName}, I'd be very upset!`,
+    `${generatedName}? Were your parents drunk when they named you?`,
+    `Hurray! It's ${generatedName}, hero of great renown!`,
   ];
 
   const textElement = document.createElement("div");

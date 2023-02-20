@@ -28,12 +28,12 @@ input[type="number"] {
 
 .name {
   color: white;
-  padding: 0.3em;
+  padding: 0.3em 0;
   font-size: 3em;
 }
 
 .example {
-  padding: 0.3em;
+  padding: 0.3em 0;
   font-size: 1.5em;
 }
 

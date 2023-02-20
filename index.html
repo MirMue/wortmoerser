@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,14 +16,14 @@
   <body>
     <header>
       <h1>Wortmoerser</h1>
-      <h2>Ein Markovscher Namensgenerator</h2>
+      <h2>A Random Name Generator</h2>
     </header>
     <form>
-      <label>Geschlecht:</label>
+      <label>Gender:</label>
       <input type="radio" id="male" name="gender" value="male" />
-      <label for="male">männlich</label>
+      <label for="male">male</label>
       <input type="radio" id="female" name="gender" value="female" />
-      <label for="female">weiblich</label>
+      <label for="female">female</label>
       <input
         type="radio"
         id="random"
@@ -31,9 +31,9 @@
         value="random"
         checked="true"
       />
-      <label for="randomgender">zufällig</label>
+      <label for="randomgender">random</label>
       <br />
-      <label for="minlength">Min. Länge:</label>
+      <label for="minlength">min. length:</label>
       <input
         type="number"
         id="minlength"
@@ -42,7 +42,7 @@
         min="2"
         value="3"
       />
-      <label for="maxlength">Max. Länge:</label>
+      <label for="maxlength">max. length:</label>
       <input
         type="number"
         id="maxlength"
@@ -61,16 +61,7 @@
     </form>
     <div class="container-name"></div>
     <footer>
-      <p>Genutzte Ressourcen:</p>
-      <a href="https://github.com/ndsvw/JSON-Namen"
-        >github.com: ndsvw / JSON-Namen</a
-      >
-      <br />
-      <a
-        href="https://medium.com/@alexkrameris/markov-chain-implementation-in-javascript-a698f371d66f"
-        >medium.com: Alex Kramer - "Markov Chain implementation in
-        Javascript"</a
-      >
+      <p>By <a href="https://github.com/MirMue">MirMue</a></p>
     </footer>
   </body>
 </html>
