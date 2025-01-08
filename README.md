@@ -6,12 +6,6 @@
 
 Wortmoerser is a simple Javascript based app for generating names using a markov chain.
 
-It is inspired by german author Walter Moers, who jumbles existing person's names to create new names for his characters, like changing "Edgar Allan Poe" to "Perla la Gadeon".
-"Wortmoerser" can also be fittingly translated to "word mortar".
-
-> "It consists of nothing but different-looking letters that seem to be randomly mixed up. But you can still read it!"
-> _Walter Moers: The Labyrinth of Dreaming Books_
-
 ### Instructions and Usage
 
 - Download repository
